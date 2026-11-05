@@ -7,3 +7,29 @@ editor: visual
 ---
 
 \*note from class: to get changes on GitHub, you need to save-commit-push (on R or on GitDesktop)
+
+
+```{r}
+library(tidyverse)
+library(dplyr)
+install.packages("tidytext")
+library(tidytext)
+```
+
+```{r}
+text <- c("This play is called “Our Town.” It was written by Thornton Wilder, presented by the RC Players, produced by Avalon Litwiller, and directed by Mary Zotter. Tonight, Our Town is presented in the Keene Theater at the University of Michigan, which was built on the traditional lands of the Anishinaabe people, past, present, and future. In this play, you will see Miss Addison Jones, Miss Emily Hlavity, Mr. Augustine Cabello, Mr. Dominic Pfeffer, and many others. 
+")
+
+text
+```
+
+```{r}
+text_df <- tibble(line = 1:4, text = text)
+
+text_df
+```
+```{r}
+text_df |> 
+  unnest_tokens(word, text)
+```
+
